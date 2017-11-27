@@ -14,16 +14,20 @@ def start(SITE_URL):
         if not next_url:
             break
 
-        site_content = http.get_site_content(next_url)
-        links_found = http.get_links(site_content, SITE_URL)
-        helper.split_links(
-            links_found,
-            '/produto/',
-            product_url_list,
-            product_checked_url_list,
-            resting_url_list,
-            resting_checked_url_list
-        )
+        try:
+            site_content = http.get_site_content(next_url)
+            links_found = http.get_links(site_content, SITE_URL)
+            helper.split_links(
+                links_found,
+                '/produto/',
+                product_url_list,
+                product_checked_url_list,
+                resting_url_list,
+                resting_checked_url_list
+            )
+        except:
+            continue
+
         next_url = resting_url_list.pop()
         print(next_url)
 
