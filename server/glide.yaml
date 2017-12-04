@@ -1,0 +1,7 @@
+package: ./src/github.com
+import:
+- package: gopkg.in/mgo.v2
+  subpackages:
+  - bson
+- package: github.com/gin-gonic/gin
+  version: ^1.2.0
